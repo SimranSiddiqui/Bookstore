@@ -3,9 +3,18 @@ import { PORT } from "./config.js";
 import mongoose from "mongoose";
 import { mongoURL } from "./config.js";
 import booksRoute from "./routes/booksRoute.js";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
+
+app.use(
+    cors({
+        origin: "",
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        allowedHeaders: ['Content-Type'],
+    })
+);
 
 app.get('/', (req, res)=>{
     //res.set('Cache-Control', 'no-store');
